@@ -4,8 +4,10 @@ use arbitrary::{Arbitrary, Unstructured};
 use ark_std::UniformRand;
 use jf_aap::keys::{UserAddress, UserKeyPair};
 use jf_aap::structs::{FreezeFlag, Nullifier, ReceiverMemo, RecordOpening};
-use jf_aap::{BaseField, KeyPair};
+use jf_aap::{BaseField, KeyPair, MerkleTree};
 use rand_chacha::{rand_core::SeedableRng, ChaChaRng};
+use serde::{Deserialize, Serialize};
+use zerok_macros::ser_test;
 
 #[derive(PartialEq, Eq, Hash)]
 pub struct ArbitraryNullifier(Nullifier);
@@ -124,5 +126,20 @@ impl<'a> Arbitrary<'a> for ArbitraryKeyPair {
     fn arbitrary(u: &mut Unstructured<'a>) -> arbitrary::Result<Self> {
         let mut rng = ChaChaRng::from_seed(u.arbitrary()?);
         Ok(Self(KeyPair::generate(&mut rng)))
+    }
+}
+
+#[ser_test(arbitrary, ark(false))]
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+pub struct ArbitraryMerkleTree(pub MerkleTree);
+
+impl<'a> Arbitrary<'a> for ArbitraryMerkleTree {
+    fn arbitrary(u: &mut arbitrary::Unstructured<'a>) -> arbitrary::Result<Self> {
+        let mut mt = MerkleTree::new(3).unwrap();
+        for _ in 0..15 {
+            // todo: range restricted random depth and count
+            mt.push(u.arbitrary::<ArbitraryBaseField>()?.into());
+        }
+        Ok(ArbitraryMerkleTree(mt))
     }
 }
