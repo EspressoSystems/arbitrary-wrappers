@@ -9,8 +9,14 @@ use rand_chacha::{rand_core::SeedableRng, ChaChaRng};
 use serde::{Deserialize, Serialize};
 use zerok_macros::ser_test;
 
-#[derive(PartialEq, Eq, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct ArbitraryNullifier(Nullifier);
+
+impl From<Nullifier> for ArbitraryNullifier {
+    fn from(n: Nullifier) -> Self {
+        Self(n)
+    }
+}
 
 impl From<ArbitraryNullifier> for Nullifier {
     fn from(n: ArbitraryNullifier) -> Self {
