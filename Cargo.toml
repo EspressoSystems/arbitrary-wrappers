@@ -7,7 +7,7 @@ edition = "2018"
 arbitrary = { version="1.0", features=["derive"] }
 ark-std = { version = "0.3.0", default-features = false }
 itertools = "0.10.1"
-jf-cap = { features=["std"], git = "ssh://git@github.com/SpectrumXYZ/cap.git", rev = "3d4b4b76d3d799743fcb7186887be35a30df974a" }
+jf-cap = { features=["std"], git = "ssh://git@github.com/SpectrumXYZ/cap.git", rev = "5d9f71ea796a3107700809bd0cd343ad48bb5166" }
 rand_chacha = { version = "0.3.1", features = ["serde1"] }
 serde = { version = "1.0", features = ["derive"] }
 zerok-macros = { git = "ssh://git@github.com/SpectrumXYZ/zerok-macros.git" }
