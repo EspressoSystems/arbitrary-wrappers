@@ -2,9 +2,9 @@
 
 use arbitrary::{Arbitrary, Unstructured};
 use ark_std::UniformRand;
-use jf_aap::keys::{UserAddress, UserKeyPair};
-use jf_aap::structs::{FreezeFlag, Nullifier, ReceiverMemo, RecordOpening};
-use jf_aap::{BaseField, KeyPair, MerkleTree};
+use jf_cap::keys::{UserAddress, UserKeyPair};
+use jf_cap::structs::{FreezeFlag, Nullifier, ReceiverMemo, RecordOpening};
+use jf_cap::{BaseField, KeyPair, MerkleTree};
 use rand_chacha::{rand_core::SeedableRng, ChaChaRng};
 use serde::{Deserialize, Serialize};
 use zerok_macros::ser_test;
