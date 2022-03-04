@@ -9,12 +9,12 @@
 
 use arbitrary::{Arbitrary, Unstructured};
 use ark_std::UniformRand;
+use espresso_macros::ser_test;
 use jf_cap::keys::{UserAddress, UserKeyPair};
 use jf_cap::structs::{FreezeFlag, Nullifier, ReceiverMemo, RecordOpening};
 use jf_cap::{BaseField, KeyPair, MerkleTree};
 use rand_chacha::{rand_core::SeedableRng, ChaChaRng};
 use serde::{Deserialize, Serialize};
-use espresso_macros::ser_test;
 
 #[derive(Clone, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct ArbitraryNullifier(Nullifier);
