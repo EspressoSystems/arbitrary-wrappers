@@ -1,6 +1,6 @@
 [package]
 name = "arbitrary-wrappers"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Espresso Systems <hello@espressosys.com>"]
 edition = "2018"
 license = "GPL-3.0-or-later"
