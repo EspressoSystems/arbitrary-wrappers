@@ -10,7 +10,7 @@
 use arbitrary::{Arbitrary, Unstructured};
 use ark_std::UniformRand;
 use espresso_macros::ser_test;
-use jf_cap::keys::{ViewerKeyPair, FreezerKeyPair, UserAddress, UserKeyPair};
+use jf_cap::keys::{FreezerKeyPair, UserAddress, UserKeyPair, ViewerKeyPair};
 use jf_cap::structs::{FreezeFlag, Nullifier, ReceiverMemo, RecordOpening};
 use jf_cap::{BaseField, KeyPair, MerkleTree};
 use rand_chacha::{rand_core::SeedableRng, ChaChaRng};
