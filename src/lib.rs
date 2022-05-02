@@ -10,7 +10,7 @@
 use arbitrary::{Arbitrary, Unstructured};
 use ark_std::UniformRand;
 use espresso_macros::ser_test;
-use jf_cap::keys::{AuditorKeyPair, FreezerKeyPair, UserAddress, UserKeyPair};
+use jf_cap::keys::{FreezerKeyPair, UserAddress, UserKeyPair, ViewerKeyPair};
 use jf_cap::structs::{FreezeFlag, Nullifier, ReceiverMemo, RecordOpening};
 use jf_cap::{BaseField, KeyPair, MerkleTree};
 use rand_chacha::{rand_core::SeedableRng, ChaChaRng};
@@ -127,18 +127,18 @@ impl<'a> Arbitrary<'a> for ArbitraryUserAddress {
     }
 }
 
-pub struct ArbitraryAuditorKeyPair(AuditorKeyPair);
+pub struct ArbitraryViewerKeyPair(ViewerKeyPair);
 
-impl From<ArbitraryAuditorKeyPair> for AuditorKeyPair {
-    fn from(k: ArbitraryAuditorKeyPair) -> Self {
+impl From<ArbitraryViewerKeyPair> for ViewerKeyPair {
+    fn from(k: ArbitraryViewerKeyPair) -> Self {
         k.0
     }
 }
 
-impl<'a> Arbitrary<'a> for ArbitraryAuditorKeyPair {
+impl<'a> Arbitrary<'a> for ArbitraryViewerKeyPair {
     fn arbitrary(u: &mut Unstructured<'a>) -> arbitrary::Result<Self> {
         let mut rng = ChaChaRng::from_seed(u.arbitrary()?);
-        Ok(Self(AuditorKeyPair::generate(&mut rng)))
+        Ok(Self(ViewerKeyPair::generate(&mut rng)))
     }
 }
 
