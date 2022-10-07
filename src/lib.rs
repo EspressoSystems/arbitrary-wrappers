@@ -173,7 +173,7 @@ impl<'a> Arbitrary<'a> for ArbitraryKeyPair {
 }
 
 #[ser_test(arbitrary, ark(false))]
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct ArbitraryMerkleTree(pub MerkleTree);
 
 impl<'a> Arbitrary<'a> for ArbitraryMerkleTree {
